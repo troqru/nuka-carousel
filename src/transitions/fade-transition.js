@@ -74,7 +74,7 @@ export default class FadeTransition extends React.Component {
       listStyleType: 'none',
       verticalAlign: 'top',
       width: this.props.slideWidth,
-      height: '100%',
+      height: 'auto',
       boxSizing: 'border-box',
       MozBoxSizing: 'border-box',
       marginLeft: this.props.cellSpacing / 2,

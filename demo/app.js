@@ -34,10 +34,9 @@ class App extends React.Component {
           transitionMode={this.state.transitionMode}
           cellAlign={this.state.cellAlign}
           slidesToShow={this.state.slidesToShow}
-          initialSlideHeight={200}
           wrapAround={this.state.wrapAround}
           slideIndex={this.state.slideIndex}
-          // heightMode={this.state.heightMode}
+          heightMode={this.state.heightMode}
           renderTopCenterControls={({ currentSlide }) => (
             <div
               style={{
@@ -62,10 +61,10 @@ class App extends React.Component {
               alt={`Slide ${index + 1}`}
               key={color}
               onClick={this.handleImageClick}
-              // style={{
-              //   height:
-              //     this.state.heightMode === 'current' ? 100 * (index + 1) : 400
-              // }}
+              style={{
+                height:
+                  this.state.heightMode === 'current' ? 100 * (index + 1) : 400
+              }}
             />
           ))}
         </Carousel>
