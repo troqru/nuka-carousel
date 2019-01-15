@@ -8,17 +8,17 @@ class App extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {
-      slideIndex: 0,
-      length: 10,
-      wrapAround: false,
       animation: undefined,
-      underlineHeader: false,
-      slidesToShow: 1,
-      slidesToScroll: 1,
       cellAlign: 'left',
-      transitionMode: 'scroll',
       heightMode: 'max',
-      withoutControls: false
+      length: 10,
+      slideIndex: 0,
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      transitionMode: 'scroll',
+      underlineHeader: false,
+      withoutControls: false,
+      wrapAround: false
     };
 
     this.handleImageClick = this.handleImageClick.bind(this);
@@ -94,6 +94,7 @@ class App extends React.Component {
             >
               Toggle Show 3 Slides Only
             </button>
+
             <button
               onClick={() =>
                 this.setState({
@@ -105,6 +106,7 @@ class App extends React.Component {
             >
               Toggle Fade {this.state.transitionMode === 'fade' ? 'Off' : 'On'}
             </button>
+
             <button
               onClick={() =>
                 this.setState({
@@ -114,6 +116,7 @@ class App extends React.Component {
             >
               Toggle slidesToShow: {this.state.slidesToShow > 1 ? 1 : 3}
             </button>
+
             <button
               onClick={() =>
                 this.setState(prevState => ({
@@ -123,6 +126,7 @@ class App extends React.Component {
             >
               Toggle Wrap Around
             </button>
+
             <button
               onClick={() =>
                 this.setState({
@@ -135,6 +139,7 @@ class App extends React.Component {
               Toggle Zoom Animation{' '}
               {this.state.animation === 'zoom' ? 'Off' : 'On'}
             </button>
+
             {this.state.transitionMode !== 'fade' && (
               <div>
                 {this.state.slidesToShow > 1.0 && (
@@ -144,11 +149,13 @@ class App extends React.Component {
                     >
                       Left
                     </button>
+
                     <button
                       onClick={() => this.setState({ cellAlign: 'center' })}
                     >
                       Center
                     </button>
+
                     <button
                       onClick={() => this.setState({ cellAlign: 'right' })}
                     >
@@ -166,6 +173,7 @@ class App extends React.Component {
                   >
                     Toggle Partially Visible Slides
                   </button>
+
                   <button
                     onClick={() =>
                       this.setState({
@@ -178,6 +186,7 @@ class App extends React.Component {
                   >
                     Toggle Height Mode Current
                   </button>
+
                   <button
                     onClick={() =>
                       this.setState({
