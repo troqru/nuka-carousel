@@ -2,18 +2,19 @@ import Carousel from '../src/index';
 import React from 'react';
 import ReactDom from 'react-dom';
 
-const colors = ['7732bb', '047cc0', '00884b', 'e3bc13', 'db7c00', 'aa231f'];
+const colors = ['7732bb', '047cc0', '00884b', 'e3bc13', 'db7c00'];
 
 class App extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {
       slideIndex: 0,
-      length: 6,
+      length: 10,
       wrapAround: false,
       animation: undefined,
       underlineHeader: false,
       slidesToShow: 1,
+      slidesToScroll: 1,
       cellAlign: 'left',
       transitionMode: 'scroll',
       heightMode: 'max',
@@ -38,6 +39,8 @@ class App extends React.Component {
           wrapAround={this.state.wrapAround}
           slideIndex={this.state.slideIndex}
           heightMode={this.state.heightMode}
+          slidesToShow={this.state.slidesToShow}
+          slidesToScroll={this.state.slidesToScroll}
           renderTopCenterControls={({ currentSlide }) => (
             <div
               style={{
@@ -104,6 +107,15 @@ class App extends React.Component {
             </button>
             <button
               onClick={() =>
+                this.setState({
+                  slidesToShow: this.state.slidesToShow === 1 ? 3 : 1
+                })
+              }
+            >
+              Toggle slidesToShow: {this.state.slidesToShow > 1 ? 1 : 3}
+            </button>
+            <button
+              onClick={() =>
                 this.setState(prevState => ({
                   wrapAround: !prevState.wrapAround
                 }))
@@ -123,55 +135,63 @@ class App extends React.Component {
               Toggle Zoom Animation{' '}
               {this.state.animation === 'zoom' ? 'Off' : 'On'}
             </button>
-          </div>
-        </div>
-        {this.state.transitionMode !== 'fade' && (
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            {this.state.slidesToShow > 1.0 && (
+            {this.state.transitionMode !== 'fade' && (
               <div>
-                <button onClick={() => this.setState({ cellAlign: 'left' })}>
-                  Left
-                </button>
-                <button onClick={() => this.setState({ cellAlign: 'center' })}>
-                  Center
-                </button>
-                <button onClick={() => this.setState({ cellAlign: 'right' })}>
-                  Right
-                </button>
+                {this.state.slidesToShow > 1.0 && (
+                  <div>
+                    <button
+                      onClick={() => this.setState({ cellAlign: 'left' })}
+                    >
+                      Left
+                    </button>
+                    <button
+                      onClick={() => this.setState({ cellAlign: 'center' })}
+                    >
+                      Center
+                    </button>
+                    <button
+                      onClick={() => this.setState({ cellAlign: 'right' })}
+                    >
+                      Right
+                    </button>
+                  </div>
+                )}
+                <div style={{ marginLeft: 'auto' }}>
+                  <button
+                    onClick={() =>
+                      this.setState({
+                        slidesToShow: this.state.slidesToShow > 1.0 ? 1.0 : 1.25
+                      })
+                    }
+                  >
+                    Toggle Partially Visible Slides
+                  </button>
+                  <button
+                    onClick={() =>
+                      this.setState({
+                        heightMode:
+                          this.state.heightMode === 'current'
+                            ? 'max'
+                            : 'current'
+                      })
+                    }
+                  >
+                    Toggle Height Mode Current
+                  </button>
+                  <button
+                    onClick={() =>
+                      this.setState({
+                        withoutControls: !this.state.withoutControls
+                      })
+                    }
+                  >
+                    Toggle Controls
+                  </button>
+                </div>
               </div>
             )}
-            <div style={{ marginLeft: 'auto' }}>
-              <button
-                onClick={() =>
-                  this.setState({
-                    slidesToShow: this.state.slidesToShow > 1.0 ? 1.0 : 1.25
-                  })
-                }
-              >
-                Toggle Partially Visible Slides
-              </button>
-              <button
-                onClick={() =>
-                  this.setState({
-                    heightMode:
-                      this.state.heightMode === 'current' ? 'max' : 'current'
-                  })
-                }
-              >
-                Toggle Height Mode Current
-              </button>
-              <button
-                onClick={() =>
-                  this.setState({
-                    withoutControls: !this.state.withoutControls
-                  })
-                }
-              >
-                Toggle Controls
-              </button>
-            </div>
           </div>
-        )}
+        </div>
       </div>
     );
   }
