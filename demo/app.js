@@ -2,7 +2,7 @@ import Carousel from '../src/index';
 import React from 'react';
 import ReactDom from 'react-dom';
 
-const colors = ['7732bb', '047cc0', '00884b', 'e3bc13', 'db7c00'];
+const colors = ['7732bb', '047cc0', '00884b', 'e3bc13', 'db7c00', 'aa231f'];
 
 class App extends React.Component {
   constructor() {
@@ -11,7 +11,7 @@ class App extends React.Component {
       animation: undefined,
       cellAlign: 'left',
       heightMode: 'max',
-      length: 10,
+      length: 6,
       slideIndex: 0,
       slidesToScroll: 1,
       slidesToShow: 1,
