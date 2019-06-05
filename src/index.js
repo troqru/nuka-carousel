@@ -248,6 +248,10 @@ export default class Carousel extends React.Component {
           e.preventDefault();
         }
 
+        if (direction === this.props.disableDirection) {
+          return;
+        }
+
         const length = this.props.vertical
           ? Math.round(
               Math.sqrt(
@@ -1068,6 +1072,7 @@ Carousel.propTypes = {
   cellSpacing: PropTypes.number,
   enableKeyboardControls: PropTypes.bool,
   disableAnimation: PropTypes.bool,
+  disableDirection: PropTypes.number,
   disableEdgeSwiping: PropTypes.bool,
   dragging: PropTypes.bool,
   easing: PropTypes.string,

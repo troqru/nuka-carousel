@@ -35,3 +35,5 @@ es
 lib
 yarn-error.log*
 package-lock.json
+#vscode local hostory
+.history
